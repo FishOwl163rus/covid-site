@@ -1,1 +1,56 @@
 /* You can add global styles to this file, and also import other style files */
+.number {
+  font-size: 2rem;
+  color: #000;
+  font-weight: 900;
+}
+
+.img-play-vid {
+  position: relative;
+}
+
+.img-play-vid .btn-play {
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: #fff;
+  color: #fff;
+  -webkit-box-shadow: 0 15px 30px 0 rgb(0 0 0 / 5%);
+  box-shadow: 0 15px 30px 0 rgb(0 0 0 / 5%);
+}
+
+.img-play-vid .absolute-block .text {
+  margin-top: -40px;
+  color: #fff;
+  margin-right: 80px;
+  position: relative;
+}
+
+.img-play-vid .absolute-block {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.img-play-vid .btn-play img {
+  position: absolute;
+  top: 50%;
+  left: 52%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.feature-v1 h3 {
+  font-size: 16px;
+  font-weight: 900;
+  margin-bottom: 0;
+  color: #6f42c1;
+}
+
+.site-section {
+  padding: 90px 0;
+}

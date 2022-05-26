@@ -1,0 +1,57 @@
+.symptom {
+  padding: 30px;
+  -webkit-box-shadow: 0 15px 30px 0 rgb(0 0 0 / 10%);
+  box-shadow: 0 15px 30px 0 rgb(0 0 0 / 10%);
+  background: #fff;
+  height: 100%;
+}
+
+.symptom .img {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 80px;
+  flex: 0 0 80px;
+  margin-right: 20px;
+}
+
+.bg-primary-light {
+  background: rgba(111, 66, 193, 0.05);
+}
+
+.list-unstyled {
+  padding-left: 0;
+  list-style: none;
+}
+
+.do h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 30px; }
+
+.do .check li {
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 10px; }
+.do .check li:before {
+  color: #a8df65;
+  position: absolute;
+  left: 0;
+  top: 0;
+  content: "✅"; }
+
+.dont h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 30px; }
+
+.dont .cross li {
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 10px; }
+.dont .cross li:before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #e84a5f;
+  content: "❌"; }

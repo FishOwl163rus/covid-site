@@ -7,15 +7,24 @@ import { MainComponent } from './main/main.component';
 import {NgxSpinnerModule} from "ngx-spinner";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { StatsComponent } from './stats/stats.component';
-
+import { ChartsComponent } from './charts/charts.component';
+import { ContactComponent } from './contact/contact.component';
+import { LoginComponent } from './login/login.component';
+import { RegistrationComponent } from './registration/registration.component';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
     SymptomsComponent,
     MainComponent,
-    StatsComponent
+    StatsComponent,
+    ChartsComponent,
+    ContactComponent,
+    LoginComponent,
+    RegistrationComponent,
   ],
   imports: [
+    HttpClientModule,
     BrowserAnimationsModule,
     BrowserModule,
     NgxSpinnerModule

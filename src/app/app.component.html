@@ -6,18 +6,15 @@
     </a>
 
     <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-      <li><a href="#" id="main" #main (click)="onMenuLinkClicked(main.id)"
-             class="nav-link px-2 link-secondary">Главная</a></li>
-      <li><a href="#" id="symptoms" #symptoms (click)="onMenuLinkClicked(symptoms.id)" class="nav-link px-2 link-dark">Симптомы</a>
-      </li>
-      <li><a href="#" class="nav-link px-2 link-dark">Статистика</a></li>
-      <li><a href="#" class="nav-link px-2 link-dark">О Нас</a></li>
-      <li><a href="#" class="nav-link px-2 link-dark">Защита</a></li>
+      <li><a href="#" id="main" #main (click)="onMenuLinkClicked(main.id)" class="nav-link px-2 link-secondary">Главная</a></li>
+      <li><a href="#" id="symptoms" #symptoms (click)="onMenuLinkClicked(symptoms.id)" class="nav-link px-2 link-dark">Симптомы</a></li>
+      <li><a href="#" id="stats" #stats (click)="onMenuLinkClicked(stats.id)" class="nav-link px-2 link-dark">Статистика</a></li>
+      <li><a href="#" id="contact" #contact (click)="onMenuLinkClicked(contact.id)" class="nav-link px-2 link-dark">Свяжитесь с нами</a></li>
     </ul>
 
     <div class="col-md-3 text-end">
-      <button type="button" class="btn btn-outline-primary me-2">Вход</button>
-      <button type="button" class="btn btn-primary">Регистрация</button>
+      <a id="login" #login (click)="onMenuLinkClicked(login.id)" type="button" class="btn btn-outline-primary me-2">Вход</a>
+      <a id="registration" #registration (click)="onMenuLinkClicked(registration.id)" type="button" class="btn btn-primary">Регистрация</a>
     </div>
   </header>
 </div>

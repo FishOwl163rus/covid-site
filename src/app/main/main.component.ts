@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Global} from "../models/Global";
 
 @Component({
   selector: 'app-main',
@@ -8,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class MainComponent implements OnInit {
 
   constructor() { }
+  public global: Global = new Global()
 
   ngOnInit(): void {
   }

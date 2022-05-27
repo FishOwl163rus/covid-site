@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
+import {ChartsComponent} from "../charts/charts.component";
 
 @Component({
   selector: 'app-stats',
@@ -8,8 +9,9 @@ import { Component, OnInit } from '@angular/core';
 export class StatsComponent implements OnInit {
 
   constructor() { }
-
+  @ViewChild('placeholder', {read: ViewContainerRef, static: true}) placeholder!: ViewContainerRef
   ngOnInit(): void {
+    this.placeholder.createComponent(ChartsComponent)
   }
 
 }

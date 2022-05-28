@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Injector, OnInit} from '@angular/core';
 import {Global} from "../models/Global";
+import {AppComponent} from "../app.component";
 
 @Component({
   selector: 'app-main',
@@ -8,10 +9,14 @@ import {Global} from "../models/Global";
 })
 export class MainComponent implements OnInit {
 
-  constructor() { }
+  constructor(private inject: Injector) { }
   public global: Global = new Global()
 
   ngOnInit(): void {
+  }
+
+  async onClick(){
+    await this.inject.get<AppComponent>(AppComponent).onMenuLinkClicked('stats')
   }
 
 }

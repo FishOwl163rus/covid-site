@@ -7,8 +7,8 @@
     <h1 class="display-5 fw-bold lh-1 mb-3">Оставайтесь в безопасности.</h1>
     <p class="lead">При любом недомогании лучше всего остаться дома, потому что вы можете заразить окружающих, а ваш иммунитет ослаблен и вы подвержены другим заболеваниям. Не пренебрегайте здоровьем и не занимайтесь самолечением!</p>
     <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-      <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Узнать подробнее</button>
-      <button type="button" class="btn btn-outline-secondary btn-lg px-4">Свяжитесь со мной</button>
+      <a href="#more" class="btn btn-primary btn-lg px-4 me-md-2">Узнать подробнее</a>
+      <a type="button" (click)="onClick()" class="btn btn-outline-secondary btn-lg px-4">Статистика</a>
     </div>
   </div>
 </div>
@@ -48,7 +48,7 @@
         <img src="/assets/images/main/hero_1.jpg" alt="Image" class="img-fluid">
         <div class="absolute-block d-flex">
           <span class="text">Смотреть видео</span>
-          <a href="https://www.youtube.com/watch?v=D9tTi-CDjDU" data-fancybox="" class="btn-play">
+          <a id="more" href="https://www.youtube.com/watch?v=D9tTi-CDjDU" data-fancybox="" class="btn-play">
             <img src="assets/images/main/youtube.png" class="icon-play" alt="play">
           </a>
         </div>

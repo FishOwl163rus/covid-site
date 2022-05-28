@@ -1,47 +1,103 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
 // @ts-ignore
 import * as CanvasJS from 'src/assets/canvasjs.min.js';
+import Covid from "../models/Covid";
+import {ChartData} from "../models/ChartData";
 
 @Component({
   selector: 'app-charts',
   templateUrl: './charts.component.html',
   styleUrls: ['./charts.component.css']
 })
-export class ChartsComponent implements OnInit, AfterViewInit {
+export class ChartsComponent implements OnInit {
 
   constructor() { }
 
+  public covid: Covid[] = new Array<Covid>()
+  public title: string = 'BY'
+  mapCovidDataAndPushToChartActive() {
+    return this.covid.map((x): any => {
+      return {x: new Date(x.date), y: x.active}
+    })
+  }
+  mapCovidDataAndPushToChartDeaths() {
+    return this.covid.map((x): any => {
+      return {x: new Date(x.date), y: x.deaths}
+    })
+  }
+  mapCovidDataAndPushToChartConfirmed() {
+    return this.covid.map((x): any => {
+      return {x: new Date(x.date), y: x.confirmed}
+    })
+  }
   ngOnInit(): void {
+
+  }
+
+  ngAfterViewInit(): void {
+    let activeData = this.mapCovidDataAndPushToChartActive()
+    let confirmedData = this.mapCovidDataAndPushToChartConfirmed()
+    let deathData = this.mapCovidDataAndPushToChartDeaths()
+
     let chart = new CanvasJS.Chart("chartContainer", {
       animationEnabled: true,
       theme: "light2",
       title:{
-        text: "Simple Line Chart"
+        text: this.title
+      },
+      axisX:{
+        valueFormatString: "DD MMM",
+        crosshair: {
+          enabled: true,
+          snapToDataPoint: true
+        }
+      },
+      axisY: {
+        title: "Данные",
+        includeZero: true,
+        crosshair: {
+          enabled: true
+        }
+      },
+      toolTip:{
+        shared:true
+      },
+      legend:{
+        cursor:"pointer",
+        verticalAlign: "bottom",
+        horizontalAlign: "left",
+        dockInsidePlotArea: true
       },
       data: [{
         type: "line",
-        indexLabelFontSize: 16,
-        dataPoints: [
-          { y: 450 },
-          { y: 414},
-          { y: 520, indexLabel: "\u2191 highest",markerColor: "red", markerType: "triangle" },
-          { y: 460 },
-          { y: 450 },
-          { y: 500 },
-          { y: 480 },
-          { y: 480 },
-          { y: 410 , indexLabel: "\u2193 lowest",markerColor: "DarkSlateGrey", markerType: "cross" },
-          { y: 500 },
-          { y: 480 },
-          { y: 510 }
-        ]
-      }]
+        showInLegend: true,
+        name: "Кол-во заражений",
+        markerType: "square",
+        xValueFormatString: "DD MMM, YYYY",
+        color: "#F08080",
+        dataPoints: activeData
+      },
+        {
+          type: "line",
+          showInLegend: true,
+          name: "Кол-во смертей",
+          markerType: "square",
+          xValueFormatString: "DD MMM, YYYY",
+          color: "#8f1ea6",
+          dataPoints: deathData
+        },
+        {
+          type: "line",
+          showInLegend: true,
+          name: "Кол-во подтвержденных заражений",
+          markerType: "square",
+          xValueFormatString: "DD MMM, YYYY",
+          color: "#1cf30d",
+          dataPoints: confirmedData
+        }]
     });
 
     chart.render();
-  }
-
-  ngAfterViewInit(): void {
   }
 
 }

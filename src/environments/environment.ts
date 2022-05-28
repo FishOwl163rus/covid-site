@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   country_url: 'http://localhost:4000/countries',
-  global_url: 'http://localhost:4000/global'
+  global_url: 'http://localhost:4000/global',
+  covid_url: 'http://localhost:4000/covid'
 };
 
 /*

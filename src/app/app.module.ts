@@ -12,6 +12,7 @@ import { ContactComponent } from './contact/contact.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { HttpClientModule } from '@angular/common/http';
+import {FormsModule} from "@angular/forms";
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,12 +24,13 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     RegistrationComponent,
   ],
-  imports: [
-    HttpClientModule,
-    BrowserAnimationsModule,
-    BrowserModule,
-    NgxSpinnerModule
-  ],
+    imports: [
+        HttpClientModule,
+        BrowserAnimationsModule,
+        BrowserModule,
+        NgxSpinnerModule,
+        FormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

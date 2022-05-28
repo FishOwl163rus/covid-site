@@ -9,6 +9,7 @@ import {RegistrationComponent} from "./registration/registration.component";
 import {CovidService} from "./services/covid.service";
 import {map} from "rxjs";
 import Global from "./models/Global";
+import {AuthService} from "./services/auth.service";
 
 @Component({
   selector: 'app-root',
@@ -17,20 +18,37 @@ import Global from "./models/Global";
 })
 
 export class AppComponent implements OnInit, AfterViewInit{
-  constructor(public viewContainerRef: ViewContainerRef, public spinner: NgxSpinnerService, private covidService: CovidService, private cd: ChangeDetectorRef) {
+  constructor(public viewContainerRef: ViewContainerRef,  private _auth: AuthService, public spinner: NgxSpinnerService, private covidService: CovidService, private cd: ChangeDetectorRef) {
 
   }
 
   activeMenu: string = 'main';
+  isLogin: boolean = false
+  user: string = ''
+
   @ViewChild('placeholder', {read: ViewContainerRef, static: true}) placeholder!: ViewContainerRef
 
   ngAfterViewInit(): void {
     this.cd.detectChanges();
     this.placeholder.clear();
-    this.placeholder.createComponent(MainComponent);
+    let mainComponent = this.placeholder.createComponent(MainComponent);
+    this.covidService.GetGlobal().subscribe(x => {
+      mainComponent.instance.global = x
+    })
   }
 
   ngOnInit(): void {
+    if(this._auth.getUserDetails()){
+      this.isLogin = true;
+      this.user = JSON.parse(this._auth.getUserDetails()!)['name']
+    }
+  }
+
+  logout(){
+    this._auth.clearStorage()
+    this.isLogin = false
+    this.user = ''
+    location.reload()
   }
 
   async onMenuLinkClicked(id: string): Promise<void> {
@@ -42,7 +60,6 @@ export class AppComponent implements OnInit, AfterViewInit{
         let mainComponent = this.placeholder.createComponent(MainComponent)
         this.activeMenu = 'main'
         this.covidService.GetGlobal().subscribe(x => {
-          console.log(x.date)
           mainComponent.instance.global = x
         })
         break
@@ -51,8 +68,14 @@ export class AppComponent implements OnInit, AfterViewInit{
         this.activeMenu = 'symptoms'
         break
       case 'stats':
-        this.placeholder.createComponent(StatsComponent)
+        let statsComponent = this.placeholder.createComponent(StatsComponent)
         this.activeMenu = 'stats'
+        this.covidService.GetCountries().subscribe(x => {
+          statsComponent.instance.countries = x
+        })
+        this.covidService.GetGlobal().subscribe(x => {
+          statsComponent.instance.global = x
+        })
         break
       case 'contact':
         this.placeholder.createComponent(ContactComponent)

@@ -1,19 +1,24 @@
 <div class="login-container">
-  <main class="form-signin w-100 m-auto text-center">
-    <form>
+  <main class="form-signin w-100 m-auto text-center" *ngIf = '!this.isLogin'>
+    <form #myform = "ngForm"  (ngSubmit) = "onSubmit(myform)" [noValidate]="false">
       <img class="mb-4" src="/assets/images/main/coronavirus.png" alt="">
       <h1 class="h3 mb-3 fw-normal">Вход</h1>
 
       <div class="form-floating">
-        <input type="email" class="form-control" id="floatingInput" placeholder="Почта">
+        <input type="email" class="form-control" id="floatingInput" placeholder="Почта" name="email" #email ngModel required>
         <label for="floatingInput">Почта</label>
       </div>
       <div class="form-floating">
-        <input type="password" class="form-control" id="floatingPassword" placeholder="Пароль">
+        <input type="password" class="form-control" id="floatingPassword" placeholder="Пароль" name="password" #password ngModel required>
         <label for="floatingPassword">Пароль</label>
       </div>
       <button class="w-100 btn btn-lg btn-primary" type="submit">Войти</button>
       <p class="mt-5 mb-3 text-muted">© 2022</p>
     </form>
+  </main>
+  <main class="w-100 m-auto text-center" *ngIf = 'this.isLogin'>
+      <h1>Вход выполнен</h1>
+      <div class="text-center mt-2">{{data}}</div>
+      <button class="btn mt-2 w-25 btn-outline-info" (click) = 'logout()'>Выйти</button>
   </main>
 </div>

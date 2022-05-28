@@ -12,7 +12,12 @@
       <li><a href="#" id="contact" #contact (click)="onMenuLinkClicked(contact.id)" class="nav-link px-2 link-dark">Свяжитесь с нами</a></li>
     </ul>
 
-    <div class="col-md-3 text-end">
+    <div class="col-md-3 text-end" *ngIf="isLogin">
+      <span>{{user}}</span>
+      <button class="btn btn-primary ms-2" (click) = 'logout()'>Выйти</button>
+    </div>
+
+    <div class="col-md-3 text-end" *ngIf="!isLogin">
       <a id="login" #login (click)="onMenuLinkClicked(login.id)" type="button" class="btn btn-outline-primary me-2">Вход</a>
       <a id="registration" #registration (click)="onMenuLinkClicked(registration.id)" type="button" class="btn btn-primary">Регистрация</a>
     </div>

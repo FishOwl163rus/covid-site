@@ -2,33 +2,61 @@
 <div class="container-fluid" style="margin-top: 250px">
   <div class="h-100 w-100">
     <div class="rounded d-flex justify-content-center">
-      <div class="col-md-4 col-sm-12 shadow-lg p-5 bg-light">
+      <div class="col-md-4 col-sm-12 shadow-lg p-5 bg-light" *ngIf = '!this.isLogin'>
         <div class="text-center">
           <h3 class="text-primary">Регистрация</h3>
         </div>
         <div class="p-4">
-          <form action="">
+          <form #myform = "ngForm" (ngSubmit) = "onSubmit(myform)" [noValidate]="false">
             <div class="input-group mb-3">
                                     <span class="input-group-text bg-primary"><i
                                       class="bi bi-person-plus-fill text-white"></i></span>
-              <input type="text" class="form-control" placeholder="Имя пользователя">
+              <input type="text" class="form-control" placeholder="Имя пользователя" name="name" ngModel required>
             </div>
             <div class="input-group mb-3">
                                     <span class="input-group-text bg-primary"><i
                                       class="bi bi-envelope text-white"></i></span>
-              <input type="email" class="form-control" placeholder="Почта">
+              <input type="email" class="form-control" placeholder="Почта" name="email" ngModel required>
             </div>
             <div class="input-group mb-3">
                                     <span class="input-group-text bg-primary"><i
                                       class="bi bi-key-fill text-white"></i></span>
-              <input type="password" class="form-control" placeholder="Пароль">
+              <input type="password" class="form-control" placeholder="Пароль" name="password" ngModel required>
             </div>
             <div class="d-grid col-12 mx-auto">
-              <button class="btn btn-primary" type="button"><span></span> Зарегистрироваться</button>
+              <input class="btn btn-primary" type="submit" value="Зарегистрироваться"/>
             </div>
           </form>
         </div>
       </div>
+      <div *ngIf = 'this.isLogin'>
+        <h1>Регистрация выполнена</h1>
+        <span>{{data}}</span>
+      </div>
     </div>
   </div>
 </div>
+
+
+<!--
+<div class = 'row m-0 w-100'>
+  <div class = 'col-md-4 offset-4 mt-5' *ngIf = '!this.isLogin'>
+    <h4>Register</h4>
+    <form #myform = "ngForm" (ngSubmit) = "onSubmit(myform)" >
+      <div class = 'form-group'>
+        <input class = 'form-control' type = "text" name = "username" placeholder = "Username" ngModel>
+      </div>
+      <div class = 'form-group'>
+        <input class = 'form-control' type = "email" name = "email" placeholder = "Email" ngModel>
+      </div>
+
+      <div class = 'form-group'>
+        <input class = 'form-control' type = "password" name = "password" placeholder = "Password" ngModel>
+      </div>
+      <input class= 'btn btn-outline-info' type = "submit" value = "Register">
+    </form>
+  </div>
+  <div class = 'col-md-4 offset-4 mt-5' *ngIf = 'this.isLogin'>
+    <h5>You are logged in</h5>
+  </div>
+</div>-->
